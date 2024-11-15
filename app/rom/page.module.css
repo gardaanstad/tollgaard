@@ -1,0 +1,156 @@
+.roomsContainer {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.roomsContainer h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--accent-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.roomsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.roomItem {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.roomItem:last-child {
+  border-bottom: none;
+}
+
+.roomImage {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roomInfo h2 {
+  color: var(--accent-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.description {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.capacity {
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.beds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.beds p {
+  color: #4a4a4a;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.amenity {
+  background: #f8f9fa;
+  color: #4a4a4a;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.bookLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2d3436;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  margin-top: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.bookLink:hover {
+  border-color: var(--primary-color);
+  color: var(--accent-color);
+}
+
+.newTabIcon {
+  margin-left: 0.15rem;
+  opacity: 0.7;
+  position: relative;
+  top: 1px;
+}
+
+.bookLink:hover .newTabIcon {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .roomsContainer {
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .roomsContainer h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .roomItem {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  .roomImage {
+    height: 200px;
+  }
+
+  .roomInfo {
+    gap: 0.75rem;
+  }
+
+  .roomInfo h2 {
+    font-size: 1.2rem;
+  }
+
+  .amenities {
+    padding-top: 1rem;
+  }
+} 
