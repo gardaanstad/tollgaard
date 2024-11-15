@@ -11,7 +11,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
 
   return (
     <html lang="no">
