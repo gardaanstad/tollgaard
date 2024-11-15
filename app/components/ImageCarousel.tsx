@@ -30,40 +30,37 @@ export default function ImageCarousel() {
   };
 
   useEffect(() => {
-    if (!wrapperRef.current) return;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
     
     const handleTransitionEnd = () => {
       setIsTransitioning(false);
       
       if (currentIndex >= images.length * 2) {
-        if (wrapperRef.current) {
-          wrapperRef.current.style.transition = 'none';
-          wrapperRef.current.style.transform = `translateX(-${images.length * 100}%)`;
-          setCurrentIndex(images.length);
-          wrapperRef.current.offsetHeight;
-          wrapperRef.current.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
+        wrapper.style.transition = 'none';
+        wrapper.style.transform = `translateX(-${images.length * 100}%)`;
+        setCurrentIndex(images.length);
+        void wrapper.offsetHeight;
+        wrapper.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
       } else if (currentIndex <= 0) {
-        if (wrapperRef.current) {
-          wrapperRef.current.style.transition = 'none';
-          wrapperRef.current.style.transform = `translateX(-${images.length * 100}%)`;
-          setCurrentIndex(images.length);
-          wrapperRef.current.offsetHeight;
-          wrapperRef.current.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
+        wrapper.style.transition = 'none';
+        wrapper.style.transform = `translateX(-${images.length * 100}%)`;
+        setCurrentIndex(images.length);
+        void wrapper.offsetHeight;
+        wrapper.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
       }
     };
 
-    wrapperRef.current.addEventListener('transitionend', handleTransitionEnd);
+    wrapper.addEventListener('transitionend', handleTransitionEnd);
     return () => {
-      wrapperRef.current?.removeEventListener('transitionend', handleTransitionEnd);
+      wrapper?.removeEventListener('transitionend', handleTransitionEnd);
     };
-  }, [currentIndex, images.length]);
+  }, [currentIndex]);
 
   useEffect(() => {
-    if (wrapperRef.current) {
-      wrapperRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
   }, [currentIndex]);
 
   return (
