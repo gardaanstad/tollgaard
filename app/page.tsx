@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import Link from "next/link";
 import ImageCarousel from './components/ImageCarousel';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -69,14 +70,15 @@ export default function Home() {
         <section className={styles.locationSection}>
           <div className={styles.sectionContent}>
             <div className={styles.locationImageWrapper}>
-              <img
-                src="beliggenhet.webp"
+              <Image
+                src="/beliggenhet.webp"
                 alt="Tollgaarden Gjestegaard beliggenhet"
+                fill
                 style={{
-                  width: '100%',
-                  height: '100%',
                   objectFit: 'cover',
                 }}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
               />
             </div>
             <div className={styles.sectionText}>
@@ -138,14 +140,15 @@ export default function Home() {
               </Link>
             </div>
             <div className={styles.roomsImageWrapper}>
-              <img
-                src="rom_main.webp"
+              <Image
+                src="/rom_main.webp"
                 alt="Våre rom på Tollgaarden Gjestegaard"
+                fill
                 style={{
-                  width: '100%',
-                  height: '100%',
                   objectFit: 'cover',
                 }}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
               />
             </div>
           </div>
