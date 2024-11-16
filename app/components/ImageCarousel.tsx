@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from './ImageCarousel.module.css';
 
 const images = [
-  '/tollgaard_main.webp',
+  '/tollgaard_1.webp',
   '/tollgaard_2.webp',
   '/tollgaard_3.webp',
 ];

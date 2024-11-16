@@ -15,8 +15,9 @@ export default function RootLayout({
   return (
     <html lang="no">
       <head>
-        <title>Tollgaarden Gjestegaard - Historic Hotel in Larvik</title>
-        <meta name="description" content="Experience historic Larvik at Tollgaarden Gjestegaard, a boutique hotel offering comfortable rooms and authentic Norwegian hospitality." />
+        <title>Tollgaarden Gjestegaard</title>
+        <meta name="description" content="Opplev historiske Larvik i moderne leiligheter" />
+        <link rel="icon" href="/crown.svg" type="image/svg+xml" />
       </head>
       <body>
         <div className={styles.container}>

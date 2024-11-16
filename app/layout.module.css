@@ -25,7 +25,7 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--accent-color);
@@ -36,6 +36,13 @@
 
 .logo:hover {
   color: var(--primary-color);
+}
+
+.logo img {
+  margin-top: 0.3em;
+  height: 2em;
+  width: auto;
+  display: block;
 }
 
 .navLinks {
@@ -217,6 +224,13 @@
 
   .logo {
     font-size: 1.1rem;
+  }
+
+  .logo img {
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    min-width: 1.4rem;
+    min-height: 1.4rem;
   }
 
   .bookingLink {
