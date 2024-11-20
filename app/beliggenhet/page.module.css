@@ -1,139 +1,170 @@
-.locationContainer {
-  max-width: 1400px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.locationContainer h1 {
-  text-align: center;
-  margin-bottom: 4rem;
+.main {
+  flex: 1;
+}
+
+.hero {
+  min-height: 90vh;
+  padding-top: 4rem;
+  background-color: var(--background-light);
+}
+
+.heroContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: calc(90vh - 4rem);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.heroText h1 {
+  font-size: 3.5rem;
   color: var(--accent-color);
-  font-size: 3rem;
+  line-height: 1.2;
   font-weight: 700;
 }
 
-.locationContent {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+.heroText p {
+  font-size: 1.25rem;
+  color: #4a4a4a;
+  line-height: 1.6;
 }
 
-.locationInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.infoSection {
+.transportInfo {
   background: white;
-  padding: 2.5rem;
+  padding: 1.75rem;
   border-radius: 20px;
   border: 1px solid #eee;
-  transition: border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.infoSection:hover {
-  border-color: var(--primary-color);
-}
-
-.infoSection h2 {
+.transportInfo h2 {
   color: var(--accent-color);
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.infoSection p {
-  color: #4a4a4a;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-.infoSection ul {
+.transportInfo ul {
   list-style: none;
   padding: 0;
-  margin: 1.5rem 0;
+  margin-bottom: 0.75rem;
 }
 
-.infoSection li {
-  padding: 0.75rem 0;
+.transportInfo li {
+  padding: 0.5rem 0;
   color: #4a4a4a;
   font-size: 1.1rem;
   line-height: 1.5;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.infoSection li:last-child {
+.transportInfo li:last-child {
   border-bottom: none;
 }
 
-.mapContainer {
-  border-radius: 20px;
+.mapWrapper {
+  position: relative;
+  height: 100%;
+  border-radius: 30px;
   overflow: hidden;
   border: 1px solid #eee;
-  transition: border-color 0.3s ease;
 }
 
-.mapContainer:hover {
-  border-color: var(--primary-color);
-}
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 1rem;
+    min-height: auto;
+  }
 
-.mapContainer iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
-}
-
-@media (max-width: 1200px) {
-  .locationContent {
+  .heroContent {
     grid-template-columns: 1fr;
-    max-width: 800px;
-    margin: 0 auto;
-    gap: 3rem;
+    height: auto;
+    padding: 1rem;
+    gap: 1.5rem;
   }
 
-  .mapContainer iframe {
-    min-height: 400px;
+  .heroText {
+    text-align: left;
+    gap: 1rem;
+    margin: 0;
   }
+
+  .heroText h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .heroText p {
+    font-size: 1.25rem;
+    text-align: left;
+  }
+
+  .mapWrapper {
+    height: 50vh;
+    border-radius: 20px;
+    width: 100%;
+    margin: 0 0 2rem 0;
+    border: 1px solid #e0e0e0;
+  }
+
+  .transportInfo {
+    padding: 1rem;
+    padding-bottom: 0.75rem;
+    text-align: left;
+    margin: 0;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+  }
+
+  .transportInfo h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .transportInfo li {
+    font-size: 1rem;
+    padding: 0.4rem 0;
+  }
+
+  .mapWrapper iframe {
+    width: 100% !important;
+    height: 100% !important;
+  }
+} 
+
+.directionsButton {
+  align-self: flex-end;
+  margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
-  .locationContainer {
-    margin: 2rem auto;
-    padding: 0 1rem;
+@media (max-width: 1024px) {
+  .transportInfo ul {
+    margin-bottom: 0.5rem;
   }
 
-  .locationContainer h1 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+  .directionsButton {
+    margin-top: 0;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
   }
 
-  .locationContent {
-    gap: 2rem;
-  }
-
-  .locationInfo {
-    gap: 2rem;
-  }
-
-  .infoSection {
-    padding: 1.5rem;
-  }
-
-  .infoSection h2 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
-
-  .infoSection p, 
-  .infoSection li {
+  .transportInfo li {
     font-size: 1rem;
-  }
-
-  .mapContainer iframe {
-    min-height: 300px;
+    padding: 0.4rem 0;
   }
 } 

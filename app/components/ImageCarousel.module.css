@@ -5,6 +5,8 @@
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .imageWrapper {
@@ -21,6 +23,10 @@
   height: 100%;
   position: relative !important;
   object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .carouselButton {

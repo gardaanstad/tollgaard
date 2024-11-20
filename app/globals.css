@@ -3,7 +3,7 @@
   --border-radius: 8px;
   --primary-color: #FFB800;
   --primary-dark: #E6A500;
-  --accent-color: #2D3436;
+  --accent-color: #2c2c2c;
   --background-light: #ffffff;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -33,4 +33,14 @@ a {
 img {
   max-width: 100%;
   height: auto;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: black;
+}
+
+::-moz-selection {
+  background-color: var(--primary-color);
+  color: black;
 }

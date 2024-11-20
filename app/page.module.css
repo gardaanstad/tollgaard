@@ -20,19 +20,17 @@
   padding: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   gap: 2rem;
-  align-items: start;
   height: calc(90vh - 4rem);
 }
 
 .heroText {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
-  grid-column: 1;
-  grid-row: 1;
 }
 
 .heroText h1 {
@@ -40,322 +38,126 @@
   color: var(--accent-color);
   line-height: 1.2;
   font-weight: 700;
-  margin-bottom: 0;
 }
 
 .heroText p {
   font-size: 1.25rem;
   color: #4a4a4a;
   line-height: 1.6;
-  margin-bottom: 0;
 }
 
 .heroImageWrapper {
+  grid-column: 2;
+  grid-row: 1 / span 2;
   position: relative;
   height: 100%;
   border-radius: 30px;
   overflow: hidden;
-  grid-column: 2;
-  grid-row: 1 / span 3;
 }
 
 .heroActions {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
   grid-column: 1;
   grid-row: 2;
-  padding-left: 2rem;
-}
-
-.reviews {
-  background: var(--background-light);
-  padding: 2rem;
-  border-bottom: 3px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-self: flex-start;
 }
 
 .reviewsContent {
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 0.5rem;
 }
 
-.scoreLink {
+.heroBookingButton {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--accent-color);
+  font-weight: 700;
+  padding: 1rem 2rem;
+  width: fit-content;
+}
+
+.heroBookingButton:hover {
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+}
+
+.featureLinks {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
 }
 
-.scoreLink:hover {
-  transform: translateY(-2px);
-}
-
-.scoreNumber {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  line-height: 1;
-}
-
-.scoreLabel {
-  color: #636e72;
-  font-size: 0.9rem;
-}
-
-.featureLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #2d3436;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-decoration: none;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.featureLink::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.featureLink:hover::after {
-  width: 100%;
-}
-
-.featureLink:hover {
-  color: var(--accent-color);
-}
-
-.featureLink svg {
-  transition: transform 0.3s ease;
-}
-
-.featureLink:hover svg {
-  transform: translateX(5px);
-}
+/* ===================================== Mobile ============================================ */
 
 @media (max-width: 1024px) {
   .hero {
-    padding-top: 2rem;
+    padding-top: 1rem;
+    min-height: auto;
   }
 
   .heroContent {
     grid-template-columns: 1fr;
     height: auto;
-    gap: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
+    gap: 1.5rem;
     display: flex;
     flex-direction: column;
   }
 
   .heroText {
     text-align: center;
-    padding: 1rem;
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
+    gap: 1rem;
     order: 1;
+    padding: 0 0.5rem;
   }
 
   .heroText h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .heroText p {
+    font-size: 1.25rem;
+  }
+
+  .heroActions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    order: 3;
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .heroBookingButton {
+    width: 100%;
+    justify-content: center;
+    order: -1;
+  }
+
+  .reviewsContent {
+    display: none;
   }
 
   .heroImageWrapper {
     order: 2;
-    height: 35vh;
-    margin: 0 auto;
+    height: 30vh;
+    border-radius: 20px;
     width: 100%;
-    max-width: 800px;
-    grid-column: auto;
-    grid-row: auto;
+    padding: 0 0.5rem;
   }
 
-  .heroActions {
-    order: 3;
-    margin-top: 2rem;
-    grid-column: auto;
+  .featureLinks {
+    width: 100%;
     align-items: center;
-    padding-left: 0;
-    width: 100%;
     text-align: center;
-  }
-
-  .reviewsContent {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    width: 100%;
-  }
-
-  .scoreLink {
-    align-items: center;
-  }
-
-  .scoreNumber {
-    font-size: 1.3rem;
-  }
-
-  .featureLink {
-    justify-content: center;
-    width: fit-content;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 1200px) {
-  .features {
-    padding: 1rem;
-  }
-  
-  .feature {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .featureContent {
-    padding-right: 0;
-  }
-
-  .featureImageWrapper {
-    height: 250px;
-    order: -1;
-  }
-}
-
-.locationSection,
-.roomsSection {
-  min-height: 90vh;
-  padding: 4rem 0;
-  background-color: var(--background-light);
-}
-
-.sectionContent {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  min-height: calc(90vh - 8rem);
-}
-
-.locationImageWrapper,
-.roomsImageWrapper {
-  position: relative;
-  height: 600px;
-  border-radius: 30px;
-  overflow: hidden;
-}
-
-.sectionText {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.sectionText h2 {
-  font-size: 3rem;
-  color: var(--accent-color);
-  line-height: 1.2;
-  font-weight: 700;
-  margin-bottom: 0;
-}
-
-.sectionText p {
-  font-size: 1.25rem;
-  color: #4a4a4a;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-.sectionLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #2d3436;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-decoration: none;
-  position: relative;
-  transition: color 0.3s ease;
-  margin-top: 1rem;
-}
-
-.sectionLink::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.sectionLink:hover::after {
-  width: 100%;
-}
-
-.sectionLink:hover {
-  color: var(--accent-color);
-}
-
-.sectionLink svg {
-  transition: transform 0.3s ease;
-}
-
-.sectionLink:hover svg {
-  transform: translateX(5px);
-}
-
-@media (max-width: 1024px) {
-  .locationSection,
-  .roomsSection {
-    padding: 2rem 0;
-  }
-
-  .sectionContent {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    gap: 2rem;
-    padding: 1rem;
-  }
-
-  .locationImageWrapper,
-  .roomsImageWrapper {
-    height: 35vh;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 800px;
-    order: -1;
-  }
-
-  .sectionText {
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .sectionText h2 {
-    font-size: 2.5rem;
-  }
-
-  .sectionLink {
-    margin: 1rem auto 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 0.75rem;
+    margin-top: 0;
   }
 }

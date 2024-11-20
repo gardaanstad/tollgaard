@@ -1,0 +1,207 @@
+.header {
+  position: fixed;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--primary-color);
+}
+
+.logo img {
+  margin-top: 0.3em;
+  height: 2em;
+  width: auto;
+  display: block;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navLink {
+  color: #2d3436;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+  font-size: 1.1rem;
+  padding-bottom: 2px;
+  display: inline-block;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  right: 0;
+  left: auto;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+.navLink:hover {
+  color: var(--accent-color);
+}
+
+.bookingLink {
+  margin-left: 1rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 110;
+}
+
+.hamburger span {
+  width: 2rem;
+  height: 2px;
+  background: var(--accent-color);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  transform-origin: center;
+}
+
+.hamburger.active span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.newTabIcon {
+  margin-left: 0.5rem;
+  opacity: 0.7;
+  position: relative;
+  top: 1px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 1rem;
+  }
+
+  .hamburger {
+    display: flex;
+    position: relative;
+    z-index: 110;
+  }
+
+  .navLinks {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    padding: 5rem 2rem 2rem;
+    text-align: right;
+  }
+
+  .navLinks.active {
+    display: block;
+  }
+
+  .navLink {
+    font-size: 1.25rem;
+    padding: 1rem 0;
+    margin: 0.5rem 0;
+    float: right;
+    clear: both;
+  }
+
+  .bookingLink {
+    border: none;
+    padding: 1rem 0;
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+    float: right;
+    clear: both;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .logo img {
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    min-width: 1.4rem;
+    min-height: 1.4rem;
+  }
+
+  .navLink::after {
+    display: none;
+  }
+
+  .navLink:hover::after {
+    width: 0;
+  }
+
+  .navLink:hover {
+    color: #2d3436;
+  }
+
+  .bookingLink {
+    float: right;
+    clear: both;
+  }
+
+  .navLink .newTabIcon {
+    margin-left: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .navLink:hover .newTabIcon {
+    opacity: 0.7;
+  }
+} 

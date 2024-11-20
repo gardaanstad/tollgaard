@@ -1,0 +1,44 @@
+.directionsButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 0.75rem 1.25rem;
+  color: #2d3436;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  background: none;
+  cursor: pointer;
+  background: linear-gradient(to right, transparent 0%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+.directionsButton:hover {
+  border-color: var(--primary-color);
+  color: var(--accent-color);
+  background-position: 0 0;
+}
+
+.directionIcon {
+  margin-left: 0.15rem;
+  opacity: 0.7;
+  position: relative;
+  top: 1px;
+}
+
+.directionsButton:hover .directionIcon {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .directionsButton {
+    display: inline-flex;
+    justify-content: center;
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+  }
+} 

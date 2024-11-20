@@ -1,0 +1,41 @@
+.featureLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2d3436;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.featureLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  right: 0;
+  left: auto;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.featureLink:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+.featureLink:hover {
+  color: var(--accent-color);
+}
+
+.featureLink svg {
+  transition: transform 0.3s ease;
+}
+
+.featureLink:hover svg {
+  transform: translateX(5px);
+} 

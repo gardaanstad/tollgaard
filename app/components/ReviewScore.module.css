@@ -1,0 +1,29 @@
+.scoreLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.scoreLink:hover {
+  transform: translateY(-2px);
+}
+
+.scoreNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1;
+}
+
+.scoreLabel {
+  color: #636e72;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .scoreNumber {
+    font-size: 1.3rem;
+  }
+} 

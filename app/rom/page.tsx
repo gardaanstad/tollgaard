@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import styles from './page.module.css';
+import Link from "next/link";
 
 export default function Rooms() {
   const rooms = [
@@ -10,7 +11,7 @@ export default function Rooms() {
       description: 'Koselig og praktisk leilighet perfekt for par.',
       capacity: '2 personer',
       beds: ['1 stor dobbeltseng'],
-      amenities: ['Minikjøkken', 'WiFi', 'TV', 'Kjøleskap']
+      amenities: ['Kjøkken', 'TV']
     },
     {
       title: 'Nr. 2 - Leilighet med 1 soverom',
@@ -20,7 +21,7 @@ export default function Rooms() {
         'Soverom: 1 dobbeltseng',
         'Stue: 1 sovesofa'
       ],
-      amenities: ['Separat soverom', 'Kjøkken', 'WiFi', 'TV']
+      amenities: ['Kjøkken', 'Separat soverom', 'TV']
     },
     {
       title: 'Nr. 3 - Ettromsleilighet med loft',
@@ -31,7 +32,7 @@ export default function Rooms() {
         '1 sovesofa',
         '1 stor dobbeltseng'
       ],
-      amenities: ['To etasjer', 'Kjøkken', 'WiFi', 'TV', 'Oppvaskmaskin']
+      amenities: ['Kjøkken', 'TV']
     },
     {
       title: 'Nr. 4 - Ettromsleilighet over 2 plan',
@@ -41,17 +42,27 @@ export default function Rooms() {
         '1 sovesofa',
         '1 stor dobbeltseng'
       ],
-      amenities: ['To etasjer', 'Kjøkken', 'WiFi', 'TV']
+      amenities: ['Kjøkken', 'TV']
     },
     {
-      title: 'Nr. 5 - Leilighet med balkong',
+      title: 'Nr. 5 - Ettromsleilighet over 2 plan',
+      description: 'Moderne leilighet fordelt over to etasjer.',
+      capacity: 'Opptil 4 personer',
+      beds: [
+        '1 sovesofa',
+        '1 stor dobbeltseng'
+      ],
+      amenities: ['Kjøkken', 'TV']
+    },
+    {
+      title: 'Nr. 6 - Leilighet med balkong',
       description: 'Romslig leilighet med egen balkong og flott utsikt.',
       capacity: 'Opptil 5 personer',
       beds: [
         'Soverom: 1 stor dobbeltseng',
         'Stue: 2 sovesofaer'
       ],
-      amenities: ['Balkong', 'Kjøkken', 'WiFi', 'TV', 'Vaskemaskin']
+      amenities: ['Balkong', 'Kjøkken', 'TV']
     }
   ];
 
@@ -63,11 +74,12 @@ export default function Rooms() {
           <div key={index} className={styles.roomItem}>
             <div className={styles.roomImage}>
               <Image
-                src={`/room-${(index % 6) + 1}.webp`} // room-1.webp, room-2.webp, etc.
+                src={`/room-${(index % 6) + 1}.webp`}
                 alt={room.title}
-                width={300}
-                height={200}
-                objectFit="cover"
+                fill={true}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+                priority={index < 2}
               />
             </div>
             <div className={styles.roomInfo}>
@@ -84,7 +96,7 @@ export default function Rooms() {
                   <span key={i} className={styles.amenity}>{amenity}</span>
                 ))}
               </div>
-              <a 
+              <Link 
                 href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target" 
                 target="_blank"
                 rel="noopener noreferrer"
@@ -107,7 +119,7 @@ export default function Rooms() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         ))}

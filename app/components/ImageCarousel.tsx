@@ -14,6 +14,7 @@ export default function ImageCarousel() {
   const [currentIndex, setCurrentIndex] = useState(images.length);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   const extendedImages = [...images, ...images, ...images];
 
@@ -33,6 +34,13 @@ export default function ImageCarousel() {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
     
+    // Initial position without animation
+    if (!shouldAnimate) {
+      wrapper.style.transform = `translateX(-${images.length * 100}%)`;
+      setShouldAnimate(true);
+      return;
+    }
+
     const handleTransitionEnd = () => {
       setIsTransitioning(false);
       
@@ -41,27 +49,23 @@ export default function ImageCarousel() {
         wrapper.style.transform = `translateX(-${images.length * 100}%)`;
         setCurrentIndex(images.length);
         void wrapper.offsetHeight;
-        wrapper.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        wrapper.style.transition = '';
       } else if (currentIndex <= 0) {
         wrapper.style.transition = 'none';
         wrapper.style.transform = `translateX(-${images.length * 100}%)`;
         setCurrentIndex(images.length);
         void wrapper.offsetHeight;
-        wrapper.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        wrapper.style.transition = '';
       }
     };
 
     wrapper.addEventListener('transitionend', handleTransitionEnd);
+    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+
     return () => {
       wrapper?.removeEventListener('transitionend', handleTransitionEnd);
     };
-  }, [currentIndex]);
-
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
-    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }, [currentIndex]);
+  }, [currentIndex, shouldAnimate]);
 
   return (
     <div className={styles.carousel}>
@@ -90,7 +94,9 @@ export default function ImageCarousel() {
       <div 
         className={styles.imageWrapper} 
         ref={wrapperRef}
-        style={{ transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}
+        style={{ 
+          transition: shouldAnimate ? 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+        }}
       >
         {extendedImages.map((src, index) => (
           <Image
