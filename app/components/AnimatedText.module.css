@@ -1,0 +1,25 @@
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.textWrapper {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.text, .hoverText {
+  display: block;
+  line-height: 1.4;
+  height: 1.4em;
+}
+
+.hoverText {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.container.animating .textWrapper {
+  transform: translateY(-100%);
+} 

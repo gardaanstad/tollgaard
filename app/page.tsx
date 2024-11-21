@@ -14,7 +14,7 @@ export default function Home() {
               <h1>Velkommen til<br />Tollgaarden Gjestegaard</h1>
               <p>
                 Opplev historiske Larvik i våre komfortable leiligheter,
-                sentralt plassert og med gratis parkering.
+                sentralt plassert med gratis parkering.
               </p>
             </div>
             <div className={styles.heroImageWrapper}>

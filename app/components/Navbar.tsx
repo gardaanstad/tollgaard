@@ -1,13 +1,16 @@
 'use client'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { CrownIcon } from './CrownIcon'
 import styles from './Navbar.module.css'
 import { BookingButton } from './BookingButton'
+import { AnimatedText } from './AnimatedText'
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -20,12 +23,18 @@ export function Navbar() {
     return () => window.removeEventListener('resize', checkIfMobile)
   }, [])
 
+  const showText = isMobile !== null && !isMobile
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logo}>
           <CrownIcon />
-          <span>Tollgaarden</span>
+          {showText && (
+            <AnimatedText hoverText="Gå tilbake">
+              Tollgaarden
+            </AnimatedText>
+          )}
         </Link>
         <button 
           className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
@@ -39,10 +48,18 @@ export function Navbar() {
         <div 
           className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
         >
-          <Link href="/rom" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+          <Link 
+            href="/rom" 
+            className={`${styles.navLink} ${pathname === '/rom' ? styles.activeLink : ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
             Rom
           </Link>
-          <Link href="/beliggenhet" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
+          <Link 
+            href="/beliggenhet" 
+            className={`${styles.navLink} ${pathname === '/beliggenhet' ? styles.activeLink : ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
             Beliggenhet
           </Link>
           {isMobile ? (

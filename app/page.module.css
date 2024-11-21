@@ -34,7 +34,7 @@
 }
 
 .heroText h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--accent-color);
   line-height: 1.2;
   font-weight: 700;
@@ -97,7 +97,7 @@
 
 @media (max-width: 1024px) {
   .hero {
-    padding-top: 1rem;
+    padding-top: 3rem;
     min-height: auto;
   }
 
@@ -150,6 +150,9 @@
     border-radius: 20px;
     width: 100%;
     padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .featureLinks {
