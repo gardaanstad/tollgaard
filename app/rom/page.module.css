@@ -25,7 +25,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
@@ -40,6 +40,7 @@
   font-size: 1.25rem;
   color: #4a4a4a;
   line-height: 1.6;
+  display: inline;
 }
 
 .roomsList {
@@ -143,6 +144,7 @@
 .roomBookingButton {
   margin-top: 1rem;
   align-self: flex-start;
+  width: auto;
 }
 
 @media (max-width: 1024px) {
@@ -159,7 +161,7 @@
   }
 
   .heroText {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .roomsList {
@@ -177,8 +179,7 @@
   }
 
   .roomItem {
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2.5rem 0;
   }
 
   .roomItem:first-child {
@@ -187,7 +188,6 @@
 
   .roomItem:last-child {
     padding-bottom: 0;
-    border-bottom: none;
   }
 
   .roomImage {
@@ -217,5 +217,6 @@
 
   .roomBookingButton {
     align-self: stretch;
+    width: 100%;
   }
 } 

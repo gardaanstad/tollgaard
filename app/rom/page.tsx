@@ -1,13 +1,15 @@
 'use client';
 
+import React from 'react';
 import styles from './page.module.css';
 import ImageCarousel from '../components/ImageCarousel';
 import { BookingButton } from '../components/BookingButton';
+import { MobileDivider } from '../components/MobileDivider';
 
 export default function Rooms() {
   const rooms = [
     {
-      title: 'Nr. 1 - Ettromsleilighet Standard',
+      title: 'Ettromsleilighet standard',
       description: 'Koselig og praktisk leilighet perfekt for par.',
       capacity: '2 personer',
       beds: [
@@ -21,7 +23,7 @@ export default function Rooms() {
       ]
     },
     {
-      title: 'Nr. 2 - Leilighet med 1 soverom',
+      title: 'Leilighet med 1 soverom',
       description: 'Komfortabel leilighet med separat soverom.',
       capacity: 'Opptil 4 personer',
       beds: [
@@ -36,7 +38,7 @@ export default function Rooms() {
       ]
     },
     {
-      title: 'Nr. 3 - Ettromsleilighet med loft',
+      title: 'Ettromsleilighet med loft',
       description: 'Sjarmerende leilighet over to plan.',
       capacity: 'Opptil 6 personer',
       beds: [
@@ -52,7 +54,7 @@ export default function Rooms() {
       ]
     },
     {
-      title: 'Nr. 4 - Ettromsleilighet over 2 plan',
+      title: 'Ettromsleilighet over 2 plan',
       description: 'Moderne leilighet fordelt over to etasjer.',
       capacity: 'Opptil 4 personer',
       beds: [
@@ -67,7 +69,7 @@ export default function Rooms() {
       ]
     },
     {
-      title: 'Nr. 5 - Ettromsleilighet over 2 plan',
+      title: 'Ettromsleilighet over 2 plan',
       description: 'Moderne leilighet fordelt over to etasjer.',
       capacity: 'Opptil 4 personer',
       beds: [
@@ -82,7 +84,7 @@ export default function Rooms() {
       ]
     },
     {
-      title: 'Nr. 6 - Leilighet med balkong',
+      title: 'Leilighet med balkong',
       description: 'Romslig leilighet med egen balkong.',
       capacity: 'Opptil 5 personer',
       beds: [
@@ -106,7 +108,7 @@ export default function Rooms() {
             <div className={styles.heroText}>
               <h1>Våre Leiligheter</h1>
               <p>
-                Vi tilbyr 6 unike leiligheter, alle med TV, WiFi og eget kjøkken.
+                Alle leilighetene har TV, kjøkken, og gratis WiFi.
               </p>
             </div>
           </div>
@@ -114,34 +116,37 @@ export default function Rooms() {
 
         <section className={styles.roomsList}>
           {rooms.map((room, index) => (
-            <div key={index} className={styles.roomItem}>
-              <div className={styles.roomImage}>
-                <ImageCarousel images={room.images} />
-              </div>
-              <div className={styles.roomInfo}>
-                <h2 className={styles.roomTitle}>
-                  {room.title}
-                </h2>
-                <p className={styles.description}>{room.description}</p>
-                <p className={styles.capacity}>{room.capacity}</p>
-                <div className={styles.beds}>
-                  {room.beds.map((bed, i) => (
-                    <p key={i}>{bed}</p>
-                  ))}
+            <React.Fragment key={index}>
+              <div className={styles.roomItem}>
+                <div className={styles.roomImage}>
+                  <ImageCarousel images={room.images} />
                 </div>
-                <div className={styles.amenities}>
-                  {room.amenities.map((amenity, i) => (
-                    <span key={i} className={styles.amenity}>{amenity}</span>
-                  ))}
+                <div className={styles.roomInfo}>
+                  <h2 className={styles.roomTitle}>
+                    {room.title}
+                  </h2>
+                  <p className={styles.description}>{room.description}</p>
+                  <p className={styles.capacity}>{room.capacity}</p>
+                  <div className={styles.beds}>
+                    {room.beds.map((bed, i) => (
+                      <p key={i}>{bed}</p>
+                    ))}
+                  </div>
+                  <div className={styles.amenities}>
+                    {room.amenities.map((amenity, i) => (
+                      <span key={i} className={styles.amenity}>{amenity}</span>
+                    ))}
+                  </div>
+                  <BookingButton 
+                    href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
+                    className={styles.roomBookingButton}
+                  >
+                    Sjekk tilgjengelighet
+                  </BookingButton>
                 </div>
-                <BookingButton 
-                  href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
-                  className={styles.roomBookingButton}
-                >
-                  Sjekk tilgjengelighet
-                </BookingButton>
               </div>
-            </div>
+              {index < rooms.length - 1 && <MobileDivider />}
+            </React.Fragment>
           ))}
         </section>
       </main>

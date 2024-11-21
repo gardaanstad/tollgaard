@@ -74,7 +74,7 @@ export function Navbar() {
             className={`${styles.navLink} ${pathname === '/rom' ? styles.activeLink : ''}`}
             onClick={() => setIsMenuOpen(false)}
           >
-            Rom
+            Leiligheter
           </Link>
           <Link 
             href="/beliggenhet" 
