@@ -3,8 +3,9 @@
 import React from 'react';
 import styles from './page.module.css';
 import ImageCarousel from '../components/ImageCarousel';
-import { BookingButton } from '../components/BookingButton';
 import { MobileDivider } from '../components/MobileDivider';
+import { SecondaryButton } from '../components/SecondaryButton';
+import { NewTabIcon } from '../components/icons';
 
 export default function Rooms() {
   const rooms = [
@@ -137,12 +138,13 @@ export default function Rooms() {
                       <span key={i} className={styles.amenity}>{amenity}</span>
                     ))}
                   </div>
-                  <BookingButton 
+                  <SecondaryButton 
                     href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
                     className={styles.roomBookingButton}
+                    icon={<NewTabIcon />}
                   >
                     Sjekk tilgjengelighet
-                  </BookingButton>
+                  </SecondaryButton>
                 </div>
               </div>
               {index < rooms.length - 1 && <MobileDivider />}

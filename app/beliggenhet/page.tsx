@@ -1,6 +1,7 @@
 import styles from './page.module.css'
-import { BookingButton } from '../components/BookingButton'
+import { SecondaryButton } from '../components/SecondaryButton'
 import { MobileDivider } from '../components/MobileDivider'
+import { NewTabIcon } from '../components/icons'
 
 export default function Location() {
   return (
@@ -24,12 +25,13 @@ export default function Location() {
                   <li><strong>30 minutter</strong> med tog eller bil fra Torp Lufthavn</li>
                   <li><strong>2 timer</strong> med tog eller bil fra Oslo S</li>
                 </ul>
-                <BookingButton 
+                <SecondaryButton 
                   href="https://www.google.com/maps/dir/?api=1&destination=Toldgaarden+Gjestegaard+Larvik"
                   className={styles.directionsButton}
+                  icon={<NewTabIcon />}
                 >
                   Få veibeskrivelse
-                </BookingButton>
+                </SecondaryButton>
               </div>
             </div>
             <MobileDivider />

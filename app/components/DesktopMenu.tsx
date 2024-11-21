@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { BookingButton } from './BookingButton'
+import { SecondaryButton } from './SecondaryButton'
 import styles from './DesktopMenu.module.css'
 import navStyles from './Navbar.module.css'
 import { AnimatedText } from './AnimatedText'
 import { CrownIcon } from './CrownIcon'
+import { NewTabIcon } from './icons'
 
 interface DesktopMenuProps {
   pathname: string
@@ -37,12 +38,13 @@ export function DesktopMenu({ pathname }: DesktopMenuProps) {
         >
           Informasjon
         </Link>
-        <BookingButton 
+        <SecondaryButton 
           href="https://www.booking.com/hotel/no/tollgaarden.no.html"
           className={styles.bookingLink}
+          icon={<NewTabIcon />}
         >
           Reserver rom
-        </BookingButton>
+        </SecondaryButton>
       </div>
     </>
   )

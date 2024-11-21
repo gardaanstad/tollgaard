@@ -2,7 +2,8 @@ import styles from "./page.module.css";
 import ClientImageCarousel from './components/ClientImageCarousel';
 import { FeatureLink } from './components/FeatureLink'
 import { ReviewScore } from './components/ReviewScore'
-import { BookingButton } from './components/BookingButton'
+import { PrimaryButton } from './components/PrimaryButton'
+import { NewTabIcon } from './components/icons'
 
 export default function Home() {
   return (
@@ -31,13 +32,13 @@ export default function Home() {
             </div>
             
             <div className={styles.heroActions}>
-              <BookingButton 
+              <PrimaryButton 
                 href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
-                variant="primary"
-                aria-label="Reserver rom nå"
+                aria-label="Reserver rom"
+                icon={<NewTabIcon />}
               >
                 Reserver rom
-              </BookingButton>
+              </PrimaryButton>
               
               <div className={styles.featureLinks}>
                 <FeatureLink href="/rom">Se leilighetene våre</FeatureLink>

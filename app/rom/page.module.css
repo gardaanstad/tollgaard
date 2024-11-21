@@ -45,7 +45,7 @@
 
 .roomsList {
   max-width: 1400px;
-  margin: 3rem auto;
+  margin: 2rem auto;
   padding: 0 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -142,7 +142,7 @@
 }
 
 .roomBookingButton {
-  margin-top: 1rem;
+  margin-top: 0rem;
   align-self: flex-start;
   width: auto;
 }
@@ -179,7 +179,7 @@
   }
 
   .roomItem {
-    padding: 2.5rem 0;
+    padding: 1rem 0;
   }
 
   .roomItem:first-child {
