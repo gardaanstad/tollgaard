@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import ImageCarousel from './components/ImageCarousel';
+import ClientImageCarousel from './components/ClientImageCarousel';
 import { FeatureLink } from './components/FeatureLink'
 import { ReviewScore } from './components/ReviewScore'
 import { BookingButton } from './components/BookingButton'
@@ -11,16 +11,11 @@ export default function Home() {
         <section className={styles.hero}>
           <div className={styles.heroContent}>
             <div className={styles.heroText}>
-              <h1>Velkommen til<br />Tollgaarden Gjestegaard</h1>
+              <h1>Velkommen til<br></br>Tollgaarden Gjestegaard</h1>
               <p>
                 Opplev historiske Larvik i våre komfortable leiligheter,
                 sentralt plassert med gratis parkering.
               </p>
-            </div>
-            <div className={styles.heroImageWrapper}>
-              <ImageCarousel />
-            </div>
-            <div className={styles.heroActions}>
               <div className={styles.reviewsContent}>
                 <ReviewScore
                   score="8.7 - Utmerket"
@@ -33,16 +28,26 @@ export default function Home() {
                   href="https://www.expedia.no/Larvik-Hoteller-Toldgaarden-Gjestegaard.h12956936.Hotellinformasjon?pwaDialog=summary-reviews-property-summary-1"
                 />
               </div>
+            </div>
+            
+            <div className={styles.heroActions}>
               <BookingButton 
                 href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
-                className={styles.heroBookingButton}
+                variant="primary"
+                aria-label="Reserver rom nå"
               >
                 Reserver rom
               </BookingButton>
+              
               <div className={styles.featureLinks}>
+                <FeatureLink href="/rom">Se leilighetene våre</FeatureLink>
                 <FeatureLink href="/beliggenhet">Les mer om beliggenheten</FeatureLink>
-                <FeatureLink href="/rom">Se rommene våre</FeatureLink>
+                <FeatureLink href="/info">Praktisk informasjon</FeatureLink>
               </div>
+            </div>
+
+            <div className={styles.heroImageWrapper}>
+              <ClientImageCarousel />
             </div>
           </div>
         </section>

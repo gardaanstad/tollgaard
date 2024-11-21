@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { CrownIcon } from './CrownIcon'
 import styles from './Navbar.module.css'
@@ -11,6 +11,25 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
   const pathname = usePathname()
+  const menuRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        buttonRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isMenuOpen])
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -37,6 +56,7 @@ export function Navbar() {
           )}
         </Link>
         <button 
+          ref={buttonRef}
           className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
@@ -46,6 +66,7 @@ export function Navbar() {
           <span></span>
         </button>
         <div 
+          ref={menuRef}
           className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
         >
           <Link 
@@ -61,6 +82,13 @@ export function Navbar() {
             onClick={() => setIsMenuOpen(false)}
           >
             Beliggenhet
+          </Link>
+          <Link 
+            href="/info" 
+            className={`${styles.navLink} ${pathname === '/info' ? styles.activeLink : ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Informasjon
           </Link>
           {isMobile ? (
             <Link 
@@ -90,8 +118,8 @@ export function Navbar() {
             </Link>
           ) : (
             <BookingButton 
-              href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
-              className={styles.bookingLink} 
+              href="https://www.booking.com/hotel/no/tollgaarden.no.html"
+              className={styles.bookingLink}
               onClick={() => setIsMenuOpen(false)}
             >
               Reserver rom

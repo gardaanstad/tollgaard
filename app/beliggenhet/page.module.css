@@ -85,7 +85,7 @@
   border: 1px solid #eee;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .hero {
     padding-top: 1rem;
     min-height: auto;
@@ -95,13 +95,15 @@
     grid-template-columns: 1fr;
     height: auto;
     padding: 1rem;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 
   .heroText {
     text-align: left;
     gap: 1rem;
     margin: 0;
+    padding-bottom: 0;
   }
 
   .heroText h1 {
@@ -110,7 +112,7 @@
   }
 
   .heroText p {
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: left;
   }
 
@@ -118,13 +120,13 @@
     height: 50vh;
     border-radius: 20px;
     width: 100%;
-    margin: 0 0 2rem 0;
+    margin: 0;
     border: 1px solid #e0e0e0;
   }
 
   .transportInfo {
     padding: 1rem;
-    padding-bottom: 0.75rem;
+    padding-bottom: 1.5rem;
     text-align: left;
     margin: 0;
     width: 100%;
@@ -151,20 +153,3 @@
   align-self: flex-end;
   margin-bottom: 0;
 }
-
-@media (max-width: 1024px) {
-  .transportInfo ul {
-    margin-bottom: 0.5rem;
-  }
-
-  .directionsButton {
-    margin-top: 0;
-    font-size: 0.9rem;
-    padding: 0.25rem 0.5rem;
-  }
-
-  .transportInfo li {
-    font-size: 1rem;
-    padding: 0.4rem 0;
-  }
-} 

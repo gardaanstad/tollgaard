@@ -1,0 +1,13 @@
+.mobileDivider {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileDivider {
+    display: block;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+} 

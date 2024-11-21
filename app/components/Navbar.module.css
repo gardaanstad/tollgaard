@@ -76,6 +76,17 @@
 .bookingLink {
   margin-left: 1rem;
   padding: 0.75rem 1.25rem;
+  background-color: transparent;
+  color: #2d3436;
+  border: 2px solid #2d3436;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: border-color 0.2s ease;
+}
+
+.bookingLink:hover {
+  border-color: var(--primary-color);
 }
 
 .hamburger {
@@ -150,36 +161,50 @@
   }
 
   .navLinks {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: -100%;
+    width: 220px;
     height: 100vh;
     background: white;
-    padding: 5rem 2rem 2rem;
-    text-align: right;
+    padding: 5.5rem 1.5rem 2rem;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
   }
 
   .navLinks.active {
-    display: block;
+    right: 0;
   }
 
   .navLink {
-    font-size: 1.25rem;
-    padding: 1rem 0;
-    margin: 0.5rem 0;
-    float: right;
-    clear: both;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .navLink:hover {
+    opacity: 1;
+    color: var(--accent-color);
   }
 
   .bookingLink {
+    margin-left: 0;
+    background-color: transparent;
+    color: #2d3436;
     border: none;
-    padding: 1rem 0;
-    margin: 0.5rem 0;
-    font-size: 1.25rem;
-    float: right;
-    clear: both;
+    border-radius: 0;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+  }
+
+  .bookingLink:hover {
+    opacity: 1;
+    color: var(--accent-color);
   }
 
   .logo {

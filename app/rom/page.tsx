@@ -2,7 +2,7 @@
 
 import styles from './page.module.css';
 import ImageCarousel from '../components/ImageCarousel';
-import Link from 'next/link';
+import { BookingButton } from '../components/BookingButton';
 
 export default function Rooms() {
   const rooms = [
@@ -114,52 +114,34 @@ export default function Rooms() {
 
         <section className={styles.roomsList}>
           {rooms.map((room, index) => (
-            <Link 
-              key={index}
-              href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.roomLink}
-            >
-              <div className={styles.roomItem}>
-                <div className={styles.roomImage}>
-                  <ImageCarousel images={room.images} />
-                </div>
-                <div className={styles.roomInfo}>
-                  <h2 className={styles.roomTitle}>
-                    {room.title}
-                    <svg 
-                      width="14" 
-                      height="14" 
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      xmlns="http://www.w3.org/2000/svg"
-                      className={styles.titleIcon}
-                    >
-                      <path 
-                        d="M10 6H6C4.89543 6 4 6.89543 4 8V18C4 19.1046 4.89543 20 6 20H16C17.1046 20 18 19.1046 18 18V14M14 4H20M20 4V10M20 4L10 14" 
-                        stroke="currentColor" 
-                        strokeWidth="2" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </h2>
-                  <p className={styles.description}>{room.description}</p>
-                  <p className={styles.capacity}>{room.capacity}</p>
-                  <div className={styles.beds}>
-                    {room.beds.map((bed, i) => (
-                      <p key={i}>{bed}</p>
-                    ))}
-                  </div>
-                  <div className={styles.amenities}>
-                    {room.amenities.map((amenity, i) => (
-                      <span key={i} className={styles.amenity}>{amenity}</span>
-                    ))}
-                  </div>
-                </div>
+            <div key={index} className={styles.roomItem}>
+              <div className={styles.roomImage}>
+                <ImageCarousel images={room.images} />
               </div>
-            </Link>
+              <div className={styles.roomInfo}>
+                <h2 className={styles.roomTitle}>
+                  {room.title}
+                </h2>
+                <p className={styles.description}>{room.description}</p>
+                <p className={styles.capacity}>{room.capacity}</p>
+                <div className={styles.beds}>
+                  {room.beds.map((bed, i) => (
+                    <p key={i}>{bed}</p>
+                  ))}
+                </div>
+                <div className={styles.amenities}>
+                  {room.amenities.map((amenity, i) => (
+                    <span key={i} className={styles.amenity}>{amenity}</span>
+                  ))}
+                </div>
+                <BookingButton 
+                  href="https://www.booking.com/hotel/no/toldgaarden-gjestegaard.no.html#availability_target"
+                  className={styles.roomBookingButton}
+                >
+                  Sjekk tilgjengelighet
+                </BookingButton>
+              </div>
+            </div>
           ))}
         </section>
       </main>

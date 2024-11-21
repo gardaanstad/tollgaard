@@ -7,15 +7,23 @@ interface BookingButtonProps {
   href: string
   children: React.ReactNode
   icon?: React.ReactNode
+  variant?: 'default' | 'primary'
 }
 
-export function BookingButton({ onClick, className = '', href, children, icon }: BookingButtonProps) {
+export function BookingButton({ 
+  onClick, 
+  className = '', 
+  href, 
+  children, 
+  icon,
+  variant = 'default'
+}: BookingButtonProps) {
   return (
     <Link 
       href={href}
       target="_blank" 
       rel="noopener noreferrer" 
-      className={`${styles.bookingButton} ${className}`}
+      className={`${styles.bookingButton} ${variant === 'primary' ? styles.primary : ''} ${className}`}
       onClick={onClick}
     >
       {children}

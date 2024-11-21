@@ -120,29 +120,11 @@
   font-size: 0.85rem;
 }
 
-.roomLink {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  position: relative;
-}
-
 .roomTitle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   color: var(--accent-color);
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
-  position: relative;
-  width: fit-content;
-}
-
-.titleIcon {
-  opacity: 0.7;
-  flex-shrink: 0;
-  margin-left: 0.25rem;
 }
 
 .roomTitle::after {
@@ -158,10 +140,9 @@
   transform: scaleY(0.5);
 }
 
-.roomLink:hover .roomTitle::after {
-  width: 100%;
-  left: 0;
-  right: auto;
+.roomBookingButton {
+  margin-top: 1rem;
+  align-self: flex-start;
 }
 
 @media (max-width: 1024px) {
@@ -192,7 +173,21 @@
 @media (max-width: 768px) {
   .roomsList {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 0;
+  }
+
+  .roomItem {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .roomItem:first-child {
+    padding-top: 0;
+  }
+
+  .roomItem:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
   .roomImage {
@@ -218,5 +213,9 @@
 
   .roomTitle::after {
     display: none;
+  }
+
+  .roomBookingButton {
+    align-self: stretch;
   }
 } 
