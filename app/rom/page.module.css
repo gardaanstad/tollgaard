@@ -141,7 +141,6 @@
 
 .titleIcon {
   opacity: 0.7;
-  transition: transform 0.2s ease;
   flex-shrink: 0;
   margin-left: 0.25rem;
 }
@@ -215,5 +214,9 @@
 
   .roomTitle {
     font-size: 1.2rem;
+  }
+
+  .roomTitle::after {
+    display: none;
   }
 } 
