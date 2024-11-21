@@ -38,7 +38,7 @@ export default function ImageCarousel({ images = defaultImages }: ImageCarouselP
 
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  }, [images.length]);
 
   // Desktop functionality
   const goToNext = (e: React.MouseEvent) => {

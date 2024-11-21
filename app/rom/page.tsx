@@ -2,7 +2,6 @@
 
 import styles from './page.module.css';
 import ImageCarousel from '../components/ImageCarousel';
-import { RoomTitleLink } from '../components/RoomTitleLink';
 import Link from 'next/link';
 
 export default function Rooms() {
