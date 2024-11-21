@@ -105,7 +105,7 @@
     grid-template-columns: 1fr;
     height: auto;
     padding: 0.5rem;
-    gap: 1.5rem;
+    gap: 1rem;
     display: flex;
     flex-direction: column;
   }
@@ -167,7 +167,7 @@
     text-align: center;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 0.75rem;
-    margin-top: 0;
+    margin-top: 0.75rem;
     order: 1;
   }
 }
