@@ -97,7 +97,7 @@
 
 @media (max-width: 1024px) {
   .hero {
-    padding-top: 3rem;
+    padding-top: 1.5rem;
     min-height: auto;
   }
 
@@ -118,7 +118,7 @@
   }
 
   .heroText h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .heroText p {
@@ -141,15 +141,21 @@
   }
 
   .reviewsContent {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+    order: 0;
   }
 
   .heroImageWrapper {
     order: 2;
     height: 30vh;
     border-radius: 20px;
-    width: 100%;
-    padding: 0 0.5rem;
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,5 +168,6 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 0.75rem;
     margin-top: 0;
+    order: 1;
   }
 }
