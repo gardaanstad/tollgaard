@@ -10,9 +10,14 @@ import { AnimatedText } from './AnimatedText'
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
+  const [isHydrated, setIsHydrated] = useState(false)
   const pathname = usePathname()
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -67,7 +72,7 @@ export function Navbar() {
         </button>
         <div 
           ref={menuRef}
-          className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
+          className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''} ${isHydrated ? styles.hydrated : ''}`}
         >
           <Link 
             href="/rom" 
