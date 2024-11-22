@@ -40,7 +40,6 @@ export function DesktopMenu({ pathname }: DesktopMenuProps) {
         </Link>
         <SecondaryButton 
           href="https://www.booking.com/hotel/no/tollgaarden.no.html"
-          className={styles.bookingLink}
           icon={<NewTabIcon />}
         >
           Reserver rom
