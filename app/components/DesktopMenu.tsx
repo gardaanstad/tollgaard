@@ -23,6 +23,10 @@ export function DesktopMenu({ dict }: DesktopMenuProps) {
   const lang = isEnglish ? 'en' : 'no'
   const paths = routes[lang]
 
+  const isActivePath = (path: string) => {
+    return pathname === path
+  }
+
   return (
     <>
       <Link href={isEnglish ? '/en' : '/'} className={navStyles.logo}>
@@ -32,19 +36,19 @@ export function DesktopMenu({ dict }: DesktopMenuProps) {
       <div className={styles.navLinks}>
         <Link 
           href={paths.apartments}
-          className={styles.navLink}
+          className={`${styles.navLink} ${isActivePath(paths.apartments) ? styles.activeLink : ''}`}
         >
           {dict.apartments}
         </Link>
         <Link 
           href={paths.location}
-          className={styles.navLink}
+          className={`${styles.navLink} ${isActivePath(paths.location) ? styles.activeLink : ''}`}
         >
           {dict.location}
         </Link>
         <Link 
           href={paths.info}
-          className={styles.navLink}
+          className={`${styles.navLink} ${isActivePath(paths.info) ? styles.activeLink : ''}`}
         >
           {dict.information}
         </Link>
