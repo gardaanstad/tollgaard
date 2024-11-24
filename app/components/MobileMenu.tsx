@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './MobileMenu.module.css'
@@ -28,13 +28,37 @@ export function MobileMenu({ isMenuOpen, setIsMenuOpen, dict }: MobileMenuProps)
   const lang = isEnglish ? 'en' : 'no'
   const paths = routes[lang]
 
+  const baseStyles: React.CSSProperties = {
+    transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    width: '70%',
+    height: '100vh',
+    zIndex: 100
+  }
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add(styles.bodyOverlay)
+    } else {
+      document.body.classList.remove(styles.bodyOverlay)
+    }
+    
+    return () => {
+      document.body.classList.remove(styles.bodyOverlay)
+    }
+  }, [isMenuOpen])
+
   return (
     <>
       <Link href={isEnglish ? '/en' : '/'} className={navStyles.logo}>
         <CrownIcon />
       </Link>
       <div className={styles.menuControls}>
-        <LanguageSwitcher className={langStyles.mobileNavStyle} />
+        <LanguageSwitcher 
+          className={langStyles.mobileNavStyle} 
+        />
         <button 
           ref={buttonRef}
           className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
@@ -49,6 +73,7 @@ export function MobileMenu({ isMenuOpen, setIsMenuOpen, dict }: MobileMenuProps)
       <div 
         ref={menuRef}
         className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
+        style={baseStyles}
       >
         <Link 
           href={paths.apartments}

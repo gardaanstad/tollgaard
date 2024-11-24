@@ -38,4 +38,10 @@
 
 .featureLink:hover svg {
   transform: translateX(5px);
-} 
+}
+
+@media (hover: none) {
+  .featureLink:hover::after {
+    width: 0;
+  }
+}

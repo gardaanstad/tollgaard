@@ -38,22 +38,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 70%;
-  height: 100vh;
   background: white;
   padding: 5.5rem 1.5rem 2rem;
-  transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
   box-shadow: none;
   gap: 1rem;
+  z-index: 100;
 }
 
 .navLinks.active {
-  transform: translateX(0);
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -109,4 +103,19 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 110;
+}
+
+.bodyOverlay {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bodyOverlay .navLinks {
+  pointer-events: auto;
+}
+
+.bodyOverlay .menuControls {
+  pointer-events: auto;
 } 

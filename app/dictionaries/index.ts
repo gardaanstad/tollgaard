@@ -44,11 +44,119 @@ export const homeDictionary = {
 }
 
 export const infoDictionary = {
-  // ... move info page dictionary here
+  no: {
+    title: 'Praktisk informasjon',
+    subtitle: 'Alt du trenger å vite om ditt opphold hos oss',
+    checkInOut: {
+      title: 'Innsjekking og utsjekking',
+      checkIn: {
+        title: 'Innsjekking',
+        time: 'Fra 15:00 til 22:00',
+        note: 'Kontakt oss for sen innsjekking'
+      },
+      checkOut: {
+        title: 'Utsjekking',
+        time: 'Fra 05:00 til 11:00'
+      }
+    },
+    facilities: {
+      title: 'Fasiliteter',
+      parking: {
+        title: 'Parkering',
+        description: 'Gratis parkering på eiendommen'
+      },
+      internet: {
+        title: 'Internett',
+        description: 'Gratis WiFi i alle rom'
+      },
+      kitchen: {
+        title: 'Kjøkken',
+        description: 'Fullt utstyrt kjøkken'
+      }
+    },
+    payment: {
+      title: 'Betaling',
+      onArrival: {
+        title: 'Betal når du kommer',
+        description: 'Vi tar alle typer kort, Vipps og kontanter'
+      },
+      advance: {
+        title: 'Betal på forhånd',
+        description: 'Du kan betale på forhånd når du bestiller på Booking.com'
+      }
+    }
+  },
+  en: {
+    title: 'Practical Information',
+    subtitle: 'Everything you need to know about your stay with us',
+    checkInOut: {
+      title: 'Check-in and Check-out',
+      checkIn: {
+        title: 'Check-in',
+        time: 'From 15:00 to 22:00',
+        note: 'Contact us for late check-in'
+      },
+      checkOut: {
+        title: 'Check-out',
+        time: 'From 05:00 to 11:00'
+      }
+    },
+    facilities: {
+      title: 'Facilities',
+      parking: {
+        title: 'Parking',
+        description: 'Free parking on premises'
+      },
+      internet: {
+        title: 'Internet',
+        description: 'Free WiFi in all rooms'
+      },
+      kitchen: {
+        title: 'Kitchen',
+        description: 'Fully equipped kitchen'
+      }
+    },
+    payment: {
+      title: 'Payment',
+      onArrival: {
+        title: 'Pay on arrival',
+        description: 'We accept all cards, Vipps, and cash'
+      },
+      advance: {
+        title: 'Pay in advance',
+        description: 'You can pay in advance when booking through Booking.com'
+      }
+    }
+  }
 }
 
 export const locationDictionary = {
-  // ... move location page dictionary here
+  no: {
+    title: 'Beliggenhet',
+    description: 'Tollgaarden ligger sentralt plassert på Tollerodden i Larvik. Innen 5 minutters gange finner du en barnevennlig badestrand, Fritzøe Brygge, Bølgen kino og kulturhus, et titalls restauranter og kaféer, og Larvik jernbanestasjon. Du finner også Larvik Sjøfartsmuseum og Herregården rett over gata.',
+    transport: {
+      title: 'Transport',
+      items: [
+        { duration: '5 minutter', description: 'med bil unna fergeterminalen' },
+        { duration: '30 minutter', description: 'med tog eller bil fra Torp Lufthavn' },
+        { duration: '2 timer', description: 'med tog eller bil fra Oslo S' }
+      ]
+    },
+    getDirections: 'Få veibeskrivelse'
+  },
+  en: {
+    title: 'Location',
+    description: 'Tollgaarden is located in central Larvik, in the historic Tollerodden area. Within a 5-minute walk, you\'ll find a family-friendly beach, Fritzøe Brygge, Bølgen cinema and cultural center, dozens of restaurants and cafés, and Larvik train station. You\'ll also find Larvik Sjøfartsmuseum and Herregården just across the street.',
+    transport: {
+      title: 'Transport',
+      items: [
+        { duration: '5 minutes', description: 'by car from the ferry terminal' },
+        { duration: '30 minutes', description: 'by train or car from Torp Airport' },
+        { duration: '2 hours', description: 'by train or car from Oslo Central Station' }
+      ]
+    },
+    getDirections: 'Get directions'
+  }
 }
 
 export const apartmentsDictionary = {

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import styles from './Navbar.module.css'
 import mobileStyles from './MobileMenu.module.css'
+import langStyles from './LanguageSwitcher.module.css'
 import { DesktopMenu } from './DesktopMenu'
 import { MobileMenu } from './MobileMenu'
 
@@ -25,12 +26,24 @@ const dictionary = {
 const DEFAULT_IS_MOBILE = true
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // Initialize state from localStorage if available
+  const [isMenuOpen, setIsMenuOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('mobileMenuOpen')
+      return saved === 'true'
+    }
+    return false
+  })
   const [isMobile, setIsMobile] = useState(DEFAULT_IS_MOBILE)
   const pathname = usePathname()
   const isEnglish = pathname.startsWith('/en')
   const lang = isEnglish ? 'en' : 'no'
   const dict = dictionary[lang]
+
+  // Save menu state whenever it changes
+  useEffect(() => {
+    localStorage.setItem('mobileMenuOpen', isMenuOpen.toString())
+  }, [isMenuOpen])
 
   useEffect(() => {
     // Update mobile state immediately on mount
@@ -47,6 +60,9 @@ export function Navbar() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element
+      if (target.closest(`.${langStyles.languageSwitch}`)) {
+        return
+      }
       if (isMenuOpen && !target.closest(`.${mobileStyles.navLinks}, .${mobileStyles.hamburger}`)) {
         setIsMenuOpen(false)
       }

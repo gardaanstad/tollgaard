@@ -32,7 +32,6 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const pathname = usePathname()
   const isEnglish = pathname.startsWith('/en')
   
-  // Pre-calculate the target path
   const targetPath = isEnglish 
     ? getEquivalentPath(pathname, 'en', 'no')
     : getEquivalentPath(pathname, 'no', 'en')

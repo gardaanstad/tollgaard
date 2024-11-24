@@ -3,40 +3,12 @@ import styles from './page.module.css'
 import { SecondaryButton } from '../components/SecondaryButton'
 import { Divider } from '../components/Divider'
 import { NewTabIcon } from '../components/icons'
-
-const dictionary = {
-  no: {
-    title: 'Beliggenhet',
-    description: 'Tollgaarden ligger sentralt plassert på Tollerodden i Larvik. Innen 5 minutters gange finner du en barnevennlig badestrand, Fritzøe Brygge, Bølgen kino og kulturhus, et titalls restauranter og kaféer, og Larvik jernbanestasjon. Du finner også Larvik Sjøfartsmuseum og Herregården rett over gata.',
-    transport: {
-      title: 'Transport',
-      items: [
-        { duration: '5 minutter', description: 'med bil unna fergeterminalen' },
-        { duration: '30 minutter', description: 'med tog eller bil fra Torp Lufthavn' },
-        { duration: '2 timer', description: 'med tog eller bil fra Oslo S' }
-      ]
-    },
-    getDirections: 'Få veibeskrivelse'
-  },
-  en: {
-    title: 'Location',
-    description: 'Tollgaarden is located in central Larvik, in the historic Tollerodden area. Within a 5-minute walk, you\'ll find a family-friendly beach, Fritzøe Brygge, Bølgen cinema and cultural center, dozens of restaurants and cafés, and Larvik train station. You\'ll also find Larvik Sjøfartsmuseum and Herregården just across the street.',
-    transport: {
-      title: 'Transport',
-      items: [
-        { duration: '5 minutes', description: 'by car from the ferry terminal' },
-        { duration: '30 minutes', description: 'by train or car from Torp Airport' },
-        { duration: '2 hours', description: 'by train or car from Oslo Central Station' }
-      ]
-    },
-    getDirections: 'Get directions'
-  }
-}
+import { locationDictionary } from '../dictionaries'
 
 export default async function Location() {
   const headersList = await headers()
   const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'
-  const dict = dictionary[lang]
+  const dict = locationDictionary[lang]
 
   return (
     <div className={styles.page}>

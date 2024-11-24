@@ -1,97 +1,11 @@
 import { headers } from 'next/headers'
 import styles from "./page.module.css";
-
-const dictionary = {
-  no: {
-    title: 'Praktisk informasjon',
-    subtitle: 'Alt du trenger å vite om ditt opphold hos oss',
-    checkInOut: {
-      title: 'Innsjekking og utsjekking',
-      checkIn: {
-        title: 'Innsjekking',
-        time: 'Fra 15:00 til 22:00',
-        note: 'Kontakt oss for sen innsjekking'
-      },
-      checkOut: {
-        title: 'Utsjekking',
-        time: 'Fra 05:00 til 11:00'
-      }
-    },
-    facilities: {
-      title: 'Fasiliteter',
-      parking: {
-        title: 'Parkering',
-        description: 'Gratis parkering på eiendommen'
-      },
-      internet: {
-        title: 'Internett',
-        description: 'Gratis WiFi i alle rom'
-      },
-      kitchen: {
-        title: 'Kjøkken',
-        description: 'Fullt utstyrt kjøkken'
-      }
-    },
-    payment: {
-      title: 'Betaling',
-      onArrival: {
-        title: 'Betal når du kommer',
-        description: 'Vi tar alle typer kort, Vipps og kontanter'
-      },
-      advance: {
-        title: 'Betal på forhånd',
-        description: 'Du kan betale på forhånd når du bestiller på Booking.com'
-      }
-    }
-  },
-  en: {
-    title: 'Practical Information',
-    subtitle: 'Everything you need to know about your stay with us',
-    checkInOut: {
-      title: 'Check-in and Check-out',
-      checkIn: {
-        title: 'Check-in',
-        time: 'From 15:00 to 22:00',
-        note: 'Contact us for late check-in'
-      },
-      checkOut: {
-        title: 'Check-out',
-        time: 'From 05:00 to 11:00'
-      }
-    },
-    facilities: {
-      title: 'Facilities',
-      parking: {
-        title: 'Parking',
-        description: 'Free parking on premises'
-      },
-      internet: {
-        title: 'Internet',
-        description: 'Free WiFi in all rooms'
-      },
-      kitchen: {
-        title: 'Kitchen',
-        description: 'Fully equipped kitchen'
-      }
-    },
-    payment: {
-      title: 'Payment',
-      onArrival: {
-        title: 'Pay on arrival',
-        description: 'We accept all cards, Vipps, and cash'
-      },
-      advance: {
-        title: 'Pay in advance',
-        description: 'You can pay in advance when booking through Booking.com'
-      }
-    }
-  }
-}
+import { infoDictionary } from '../dictionaries'
 
 export default async function InfoPage() {
   const headersList = await headers()
   const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'
-  const dict = dictionary[lang]
+  const dict = infoDictionary[lang]
 
   return (
     <div className={styles.page}>
