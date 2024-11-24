@@ -35,8 +35,14 @@
   line-height: 1.6;
 }
 
+.infoContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
 .infoSection {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .infoSection h2 {
@@ -44,6 +50,12 @@
   color: var(--accent-color);
   margin-bottom: 1.5rem;
   font-weight: 600;
+}
+
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .infoGrid {
@@ -101,6 +113,12 @@
   display: block;
   color: #666;
   font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .infoContainer {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
