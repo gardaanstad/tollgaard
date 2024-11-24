@@ -43,9 +43,11 @@ export default async function Location() {
       <main className={styles.main}>
         <section className={styles.hero}>
           <div className={styles.heroContent}>
-            <div className={styles.heroText}>
-              <h1>{dict.title}</h1>
-              <p>{dict.description}</p>
+            <div className={styles.leftContent}>
+              <div className={styles.heroText}>
+                <h1>{dict.title}</h1>
+                <p>{dict.description}</p>
+              </div>
               <Divider mode="mobile" />
               <div className={styles.transportInfo}>
                 <h2>{dict.transport.title}</h2>
@@ -60,9 +62,9 @@ export default async function Location() {
                   href="https://www.google.com/maps/dir/?api=1&destination=Toldgaarden+Gjestegaard+Larvik"
                   className={styles.directionsButton}
                   icon={<NewTabIcon />}
-                >
-                  {dict.getDirections}
-                </SecondaryButton>
+                  >
+                    {dict.getDirections}
+                  </SecondaryButton>
               </div>
             </div>
             <Divider mode="mobile" />
