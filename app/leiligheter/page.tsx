@@ -35,7 +35,7 @@ const images = [
 
 export const metadata = {
   title: 'Leiligheter | Tollgaarden Gjestegaard',
-  description: 'Comfortable apartments with kitchen and free WiFi in Larvik'
+  description: 'Sentrale og komfortable leiligheter i Larvik'
 }
 
 export default async function Apartments() {

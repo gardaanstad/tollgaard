@@ -2,6 +2,12 @@ import { headers } from 'next/headers'
 import styles from "./page.module.css";
 import { infoDictionary } from '../dictionaries'
 
+export const metadata = {
+  title: 'Informasjon | Tollgaarden Gjestegaard',
+  description: 'Praktisk informasjon om Tollgaarden Gjestegaard'
+}
+
+
 export default async function InfoPage() {
   const headersList = await headers()
   const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'

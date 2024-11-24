@@ -5,6 +5,12 @@ import { Divider } from '../components/Divider'
 import { NewTabIcon } from '../components/icons'
 import { locationDictionary } from '../dictionaries'
 
+export const metadata = {
+  title: 'Beliggenhet | Tollgaarden Gjestegaard',
+  description: 'Sentrale leiligheter i Larvik'
+}
+
+
 export default async function Location() {
   const headersList = await headers()
   const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'

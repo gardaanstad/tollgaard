@@ -12,7 +12,7 @@ import { homeDictionary } from './dictionaries'
 // Add metadata
 export const metadata = {
   title: 'Tollgaarden Gjestegaard',
-  description: 'Comfortable apartments in historic Larvik with free parking',
+  description: 'Sentrale leiligheter i Larvik',
 }
 
 export default async function Home() {
