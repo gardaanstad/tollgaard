@@ -1,17 +1,109 @@
+import { headers } from 'next/headers'
 import styles from "./page.module.css";
 
-export default function InfoPage() {
+const dictionary = {
+  no: {
+    title: 'Praktisk informasjon',
+    subtitle: 'Alt du trenger å vite om ditt opphold hos oss',
+    checkInOut: {
+      title: 'Innsjekking og utsjekking',
+      checkIn: {
+        title: 'Innsjekking',
+        time: 'Fra 15:00 til 22:00',
+        note: 'Kontakt oss for sen innsjekking'
+      },
+      checkOut: {
+        title: 'Utsjekking',
+        time: 'Fra 05:00 til 11:00'
+      }
+    },
+    facilities: {
+      title: 'Fasiliteter',
+      parking: {
+        title: 'Parkering',
+        description: 'Gratis parkering på eiendommen'
+      },
+      internet: {
+        title: 'Internett',
+        description: 'Gratis WiFi i alle rom'
+      },
+      kitchen: {
+        title: 'Kjøkken',
+        description: 'Fullt utstyrt kjøkken'
+      }
+    },
+    payment: {
+      title: 'Betaling',
+      onArrival: {
+        title: 'Betal når du kommer',
+        description: 'Vi tar alle typer kort, Vipps og kontanter'
+      },
+      advance: {
+        title: 'Betal på forhånd',
+        description: 'Du kan betale på forhånd når du bestiller på Booking.com'
+      }
+    }
+  },
+  en: {
+    title: 'Practical Information',
+    subtitle: 'Everything you need to know about your stay with us',
+    checkInOut: {
+      title: 'Check-in and Check-out',
+      checkIn: {
+        title: 'Check-in',
+        time: 'From 15:00 to 22:00',
+        note: 'Contact us for late check-in'
+      },
+      checkOut: {
+        title: 'Check-out',
+        time: 'From 05:00 to 11:00'
+      }
+    },
+    facilities: {
+      title: 'Facilities',
+      parking: {
+        title: 'Parking',
+        description: 'Free parking on premises'
+      },
+      internet: {
+        title: 'Internet',
+        description: 'Free WiFi in all rooms'
+      },
+      kitchen: {
+        title: 'Kitchen',
+        description: 'Fully equipped kitchen'
+      }
+    },
+    payment: {
+      title: 'Payment',
+      onArrival: {
+        title: 'Pay on arrival',
+        description: 'We accept all cards, Vipps, and cash'
+      },
+      advance: {
+        title: 'Pay in advance',
+        description: 'You can pay in advance when booking through Booking.com'
+      }
+    }
+  }
+}
+
+export default async function InfoPage() {
+  const headersList = await headers()
+  const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'
+  const dict = dictionary[lang]
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
-            <h1>Praktisk informasjon</h1>
-            <p>Alt du trenger å vite om ditt opphold hos oss</p>
+            <h1>{dict.title}</h1>
+            <p>{dict.subtitle}</p>
           </div>
 
           <div className={styles.infoSection}>
-            <h2>Innsjekking og utsjekking</h2>
+            <h2>{dict.checkInOut.title}</h2>
             <div className={styles.infoGrid}>
               <div className={styles.infoItem}>
                 <div className={styles.iconWrapper}>
@@ -20,9 +112,9 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Innsjekking</h3>
-                  <p>Fra 15:00 til 22:00</p>
-                  <small>Kontakt oss for sen innsjekking</small>
+                  <h3>{dict.checkInOut.checkIn.title}</h3>
+                  <p>{dict.checkInOut.checkIn.time}</p>
+                  <small>{dict.checkInOut.checkIn.note}</small>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -32,15 +124,15 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Utsjekking</h3>
-                  <p>Fra 05:00 til 11:00</p>
+                  <h3>{dict.checkInOut.checkOut.title}</h3>
+                  <p>{dict.checkInOut.checkOut.time}</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className={styles.infoSection}>
-            <h2>Fasiliteter</h2>
+            <h2>{dict.facilities.title}</h2>
             <div className={styles.infoGrid}>
               <div className={styles.infoItem}>
                 <div className={styles.iconWrapper}>
@@ -49,8 +141,8 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Parkering</h3>
-                  <p>Gratis parkering på eiendommen</p>
+                  <h3>{dict.facilities.parking.title}</h3>
+                  <p>{dict.facilities.parking.description}</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -60,8 +152,8 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Internett</h3>
-                  <p>Gratis WiFi i alle rom</p>
+                  <h3>{dict.facilities.internet.title}</h3>
+                  <p>{dict.facilities.internet.description}</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -71,14 +163,15 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Kjøkken</h3>
-                  <p>Fullt utstyrt kjøkken</p>
+                  <h3>{dict.facilities.kitchen.title}</h3>
+                  <p>{dict.facilities.kitchen.description}</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div className={styles.infoSection}>
-            <h2>Betaling</h2>
+            <h2>{dict.payment.title}</h2>
             <div className={styles.infoGrid}>
               <div className={styles.infoItem}>
                 <div className={styles.iconWrapper}>
@@ -87,8 +180,8 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Betal når du kommer</h3>
-                  <p>Vi tar alle typer kort, Vipps og kontanter</p>
+                  <h3>{dict.payment.onArrival.title}</h3>
+                  <p>{dict.payment.onArrival.description}</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
@@ -98,8 +191,8 @@ export default function InfoPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3>Betal på forhånd</h3>
-                  <p>Du kan betale på forhånd når du bestiller på Booking.com</p>
+                  <h3>{dict.payment.advance.title}</h3>
+                  <p>{dict.payment.advance.description}</p>
                 </div>
               </div>
             </div>

@@ -4,42 +4,56 @@ import styles from './DesktopMenu.module.css'
 import navStyles from './Navbar.module.css'
 import { CrownIcon } from './CrownIcon'
 import { NewTabIcon } from './icons'
+import { LanguageSwitcher } from './LanguageSwitcher'
+import { usePathname } from 'next/navigation'
+import { routes } from '../lib/routes'
 
 interface DesktopMenuProps {
-  pathname: string
+  dict: {
+    apartments: string;
+    location: string;
+    information: string;
+    bookRoom: string;
+  };
 }
 
-export function DesktopMenu({ pathname }: DesktopMenuProps) {
+export function DesktopMenu({ dict }: DesktopMenuProps) {
+  const pathname = usePathname()
+  const isEnglish = pathname.startsWith('/en')
+  const lang = isEnglish ? 'en' : 'no'
+  const paths = routes[lang]
+
   return (
     <>
-      <Link href="/" className={navStyles.logo}>
+      <Link href={isEnglish ? '/en' : '/'} className={navStyles.logo}>
         <CrownIcon />
         <h1>Tollgaarden</h1>
       </Link>
       <div className={styles.navLinks}>
         <Link 
-          href="/rom" 
-          className={`${styles.navLink} ${pathname === '/rom' ? styles.activeLink : ''}`}
+          href={paths.apartments}
+          className={styles.navLink}
         >
-          Leiligheter
+          {dict.apartments}
         </Link>
         <Link 
-          href="/beliggenhet" 
-          className={`${styles.navLink} ${pathname === '/beliggenhet' ? styles.activeLink : ''}`}
+          href={paths.location}
+          className={styles.navLink}
         >
-          Beliggenhet
+          {dict.location}
         </Link>
         <Link 
-          href="/info" 
-          className={`${styles.navLink} ${pathname === '/info' ? styles.activeLink : ''}`}
+          href={paths.info}
+          className={styles.navLink}
         >
-          Informasjon
+          {dict.information}
         </Link>
+        <LanguageSwitcher />
         <SecondaryButton 
-          href="https://www.booking.com/hotel/no/tollgaarden.no.html"
+          href={`https://www.booking.com/hotel/no/toldgaarden-gjestegaard.${lang}.html`}
           icon={<NewTabIcon />}
         >
-          Reserver rom
+          {dict.bookRoom}
         </SecondaryButton>
       </div>
     </>

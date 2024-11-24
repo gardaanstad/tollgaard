@@ -1,0 +1,16 @@
+.divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mobileOnly {
+    display: block;
+  }
+} 

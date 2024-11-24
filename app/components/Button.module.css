@@ -20,28 +20,28 @@
   justify-content: center;
   min-height: 48px;
   font-size: 1.125rem;
-  transition: transform 0.1s ease-in-out;
   background: var(--primary-color) !important;
-  color: white !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: rgb(40, 40, 40) !important;
   max-width: 300px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .primary:hover {
-  background: var(--primary-dark) !important;
-  border-color: var(--primary-dark) !important;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.05);
 }
 
 .primary:active {
   transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .secondary {
   background: none;
-  cursor: pointer;
-  background: linear-gradient(to right, transparent 0%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-  background-size: 200% 100%;
+  justify-content: center;
+  min-height: 48px;
+  font-size: 1.125rem;
   background-position: 100% 0;
 }
 
@@ -52,21 +52,14 @@
 }
 
 .icon {
-  margin-left: 0.15rem;
-  opacity: 0.7;
   position: relative;
   top: 1px;
 }
 
-.button:hover .icon {
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .button {
     display: inline-flex;
     justify-content: center;
-    margin: 1rem 0;
     padding: 1rem 1.5rem;
   }
 

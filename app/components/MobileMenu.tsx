@@ -1,71 +1,87 @@
 import { useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import styles from './MobileMenu.module.css'
 import navStyles from './Navbar.module.css'
+import langStyles from './LanguageSwitcher.module.css'
 import { CrownIcon } from './CrownIcon'
-import { MobileDivider } from './MobileDivider'
+import { Divider } from './Divider'
+import { LanguageSwitcher } from './LanguageSwitcher'
+import { routes } from '../lib/routes'
 
 interface MobileMenuProps {
-  pathname: string
   isMenuOpen: boolean
   setIsMenuOpen: (isOpen: boolean) => void
+  dict: {
+    apartments: string
+    location: string
+    information: string
+    bookRoom: string
+  }
 }
 
-export function MobileMenu({ pathname, isMenuOpen, setIsMenuOpen }: MobileMenuProps) {
+export function MobileMenu({ isMenuOpen, setIsMenuOpen, dict }: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const pathname = usePathname()
+  const isEnglish = pathname.startsWith('/en')
+  const lang = isEnglish ? 'en' : 'no'
+  const paths = routes[lang]
 
   return (
     <>
-      <Link href="/" className={navStyles.logo}>
+      <Link href={isEnglish ? '/en' : '/'} className={navStyles.logo}>
         <CrownIcon />
       </Link>
-      <button 
-        ref={buttonRef}
-        className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div className={styles.menuControls}>
+        <LanguageSwitcher className={langStyles.mobileNavStyle} />
+        <button 
+          ref={buttonRef}
+          className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       <div 
         ref={menuRef}
         className={`${styles.navLinks} ${isMenuOpen ? styles.active : ''}`}
       >
         <Link 
-          href="/rom" 
-          className={`${styles.navLink} ${pathname === '/rom' ? styles.activeLink : ''}`}
+          href={paths.apartments}
+          className={styles.navLink}
           onClick={() => setIsMenuOpen(false)}
         >
-          Leiligheter
+          {dict.apartments}
         </Link>
-        <MobileDivider />
+        <Divider />
         <Link 
-          href="/beliggenhet" 
-          className={`${styles.navLink} ${pathname === '/beliggenhet' ? styles.activeLink : ''}`}
+          href={paths.location}
+          className={styles.navLink}
           onClick={() => setIsMenuOpen(false)}
         >
-          Beliggenhet
+          {dict.location}
         </Link>
-        <MobileDivider />
+        <Divider />
         <Link 
-          href="/info" 
-          className={`${styles.navLink} ${pathname === '/info' ? styles.activeLink : ''}`}
+          href={paths.info}
+          className={styles.navLink}
           onClick={() => setIsMenuOpen(false)}
         >
-          Informasjon
+          {dict.information}
         </Link>
-        <MobileDivider />
+        <Divider />
         <Link 
-          href="https://www.booking.com/hotel/no/tollgaarden.no.html" 
+          href={`https://www.booking.com/hotel/no/toldgaarden-gjestegaard.${lang}.html`}
           className={`${styles.navLink} ${styles.bookingLink}`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setIsMenuOpen(false)}
         >
-          Reserver rom
+          {dict.bookRoom}
           <svg 
             width="14" 
             height="14" 

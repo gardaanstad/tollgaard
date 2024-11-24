@@ -1,18 +1,50 @@
+import { headers } from 'next/headers'
 import styles from './Footer.module.css'
 
-export function Footer() {
+const dictionary = {
+  no: {
+    contact: {
+      title: 'Kontakt',
+      email: 'Email: post@tollgaarden.no',
+      phone: 'Telefon: +47 123 45 678'
+    },
+    address: {
+      title: 'Adresse',
+      street: 'Kirkestredet 12',
+      city: '3263 Larvik'
+    }
+  },
+  en: {
+    contact: {
+      title: 'Contact',
+      email: 'Email: post@tollgaarden.no',
+      phone: 'Phone: +47 123 45 678'
+    },
+    address: {
+      title: 'Address',
+      street: 'Kirkestredet 12',
+      city: '3263 Larvik'
+    }
+  }
+}
+
+export async function Footer() {
+  const headersList = await headers()
+  const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'
+  const dict = dictionary[lang]
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.footerSection}>
-          <h4>Kontakt</h4>
-          <p>Email: post@tollgaarden.no</p>
-          <p>Telefon: +47 123 45 678</p>
+          <h4>{dict.contact.title}</h4>
+          <p>{dict.contact.email}</p>
+          <p>{dict.contact.phone}</p>
         </div>
         <div className={styles.footerSection}>
-          <h4>Adresse</h4>
-          <p>Kirkestredet 12</p>
-          <p>3263 Larvik</p>
+          <h4>{dict.address.title}</h4>
+          <p>{dict.address.street}</p>
+          <p>{dict.address.city}</p>
         </div>
       </div>
     </footer>

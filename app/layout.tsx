@@ -1,4 +1,3 @@
-'use client'
 import './globals.css'
 import styles from './layout.module.css'
 import { Navbar } from './components/Navbar'

@@ -1,0 +1,47 @@
+.languageSwitch {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 24px;
+}
+
+.flagIcon {
+  width: 33px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.languageSwitch:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background-light), 0 0 0 4px var(--accent-color);
+  border-radius: 4px;
+}
+
+/* Special styling for mobile menu */
+.mobileMenuStyle {
+  width: 33px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  opacity: 0.9;
+}
+
+.mobileNavStyle {
+  padding: 0;
+  background: transparent;
+  width: 33px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 

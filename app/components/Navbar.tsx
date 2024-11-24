@@ -6,6 +6,21 @@ import mobileStyles from './MobileMenu.module.css'
 import { DesktopMenu } from './DesktopMenu'
 import { MobileMenu } from './MobileMenu'
 
+const dictionary = {
+  no: {
+    apartments: 'Leiligheter',
+    location: 'Beliggenhet',
+    information: 'Informasjon',
+    bookRoom: 'Reserver rom'
+  },
+  en: {
+    apartments: 'Apartments',
+    location: 'Location',
+    information: 'Information',
+    bookRoom: 'Book room'
+  }
+}
+
 // Default to mobile if screen width is likely to be mobile
 const DEFAULT_IS_MOBILE = true
 
@@ -13,13 +28,16 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(DEFAULT_IS_MOBILE)
   const pathname = usePathname()
+  const isEnglish = pathname.startsWith('/en')
+  const lang = isEnglish ? 'en' : 'no'
+  const dict = dictionary[lang]
 
   useEffect(() => {
     // Update mobile state immediately on mount
-    setIsMobile(window.innerWidth <= 768)
+    setIsMobile(window.innerWidth <= 1024)
     
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
+      setIsMobile(window.innerWidth <= 1024)
     }
     
     window.addEventListener('resize', checkIfMobile)
@@ -43,12 +61,12 @@ export function Navbar() {
       <nav className={styles.nav}>
         {isMobile ? (
           <MobileMenu 
-            pathname={pathname}
             isMenuOpen={isMenuOpen}
             setIsMenuOpen={setIsMenuOpen}
+            dict={dict}
           />
         ) : (
-          <DesktopMenu pathname={pathname} />
+          <DesktopMenu dict={dict} />
         )}
       </nav>
     </header>

@@ -85,7 +85,7 @@
   border: 1px solid #eee;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero {
     padding-top: 1rem;
     min-height: auto;
@@ -126,7 +126,7 @@
 
   .transportInfo {
     padding: 1rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0rem;
     text-align: left;
     margin: 0;
     width: 100%;
@@ -151,5 +151,4 @@
 
 .directionsButton {
   align-self: flex-end;
-  margin-bottom: 0;
 }

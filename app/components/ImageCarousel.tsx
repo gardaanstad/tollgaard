@@ -26,13 +26,13 @@ export default function ImageCarousel({ images = defaultImages }: ImageCarouselP
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
     
     checkMobile();
     setIsLoaded(true);
     
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 1024) {
       setCurrentIndex(images.length);
     }
 
