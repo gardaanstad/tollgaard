@@ -1,6 +1,7 @@
 'use client'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { routes } from '../lib/routes'
 import styles from './LanguageSwitcher.module.css'
 
@@ -28,25 +29,20 @@ interface LanguageSwitcherProps {
 }
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
-  const router = useRouter()
   const pathname = usePathname()
   const isEnglish = pathname.startsWith('/en')
   
-  const switchLanguage = () => {
-    if (isEnglish) {
-      const norwegianPath = getEquivalentPath(pathname, 'en', 'no')
-      router.push(norwegianPath)
-    } else {
-      const englishPath = getEquivalentPath(pathname, 'no', 'en')
-      router.push(englishPath)
-    }
-  }
+  // Pre-calculate the target path
+  const targetPath = isEnglish 
+    ? getEquivalentPath(pathname, 'en', 'no')
+    : getEquivalentPath(pathname, 'no', 'en')
 
   return (
-    <button 
-      onClick={switchLanguage} 
+    <Link 
+      href={targetPath}
       className={`${styles.languageSwitch} ${className || ''}`}
       aria-label={isEnglish ? 'Switch to Norwegian' : 'Switch to English'}
+      prefetch={true}
     >
       <Image
         src={isEnglish ? '/icons/norway.svg' : '/icons/uk.svg'}
@@ -54,7 +50,8 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
         width={33}
         height={24}
         className={styles.flagIcon}
+        priority={true}
       />
-    </button>
+    </Link>
   )
 } 

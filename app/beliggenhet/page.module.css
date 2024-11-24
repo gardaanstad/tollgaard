@@ -95,7 +95,7 @@
     grid-template-columns: 1fr;
     height: auto;
     padding: 1rem;
-    gap: 1rem;
+    gap: 2rem;
     margin-bottom: 2rem;
   }
 
@@ -126,7 +126,6 @@
 
   .transportInfo {
     padding: 1rem;
-    padding-bottom: 0rem;
     text-align: left;
     margin: 0;
     width: 100%;

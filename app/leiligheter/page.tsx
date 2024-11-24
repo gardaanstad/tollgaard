@@ -194,7 +194,7 @@ export default async function Apartments() {
                 checkAvailabilityText={dict.checkAvailability}
                 lang={lang}
               />
-              {index < dict.rooms.length - 1 && <Divider mode="mobile" />}
+              {index < dict.rooms.length - 1 && <Divider mode="mobile" className={styles.divider} />}
             </React.Fragment>
           ))}
         </section>

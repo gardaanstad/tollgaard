@@ -50,7 +50,7 @@
   padding-bottom: 10rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 0rem;
 }
 
 .roomItem {
@@ -148,6 +148,8 @@
   width: auto;
 }
 
+
+
 @media (max-width: 1024px) {
   .hero {
     padding-top: 1rem;
@@ -167,7 +169,7 @@
 
   .roomsList {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
     margin: 2rem auto;
     padding: 0 1rem;
   }
@@ -176,7 +178,7 @@
 @media (max-width: 768px) {
   .roomsList {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 1rem;
   }
 
   .roomItem {
@@ -219,5 +221,10 @@
   .roomBookingButton {
     align-self: stretch;
     width: 100%;
+  }
+
+  .divider {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 } 

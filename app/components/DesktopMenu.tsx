@@ -52,6 +52,7 @@ export function DesktopMenu({ dict }: DesktopMenuProps) {
         <SecondaryButton 
           href={`https://www.booking.com/hotel/no/toldgaarden-gjestegaard.${lang}.html`}
           icon={<NewTabIcon />}
+          className={styles.bookButton}
         >
           {dict.bookRoom}
         </SecondaryButton>

@@ -53,4 +53,8 @@
   bottom: -2px;
   left: 0;
   background-color: var(--primary-color);
-} 
+}
+
+.bookButton {
+  min-width: 12rem;
+}
