@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { SecondaryButton } from './SecondaryButton'
 import styles from './DesktopMenu.module.css'
 import navStyles from './Navbar.module.css'
-import { AnimatedText } from './AnimatedText'
 import { CrownIcon } from './CrownIcon'
 import { NewTabIcon } from './icons'
 
@@ -15,9 +14,7 @@ export function DesktopMenu({ pathname }: DesktopMenuProps) {
     <>
       <Link href="/" className={navStyles.logo}>
         <CrownIcon />
-        <AnimatedText hoverText="Gå tilbake">
-          Tollgaarden
-        </AnimatedText>
+        <h1>Tollgaarden</h1>
       </Link>
       <div className={styles.navLinks}>
         <Link 
