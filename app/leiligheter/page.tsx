@@ -1,145 +1,10 @@
 import React from 'react'
+import { Suspense } from 'react'
 import { headers } from 'next/headers'
 import styles from './page.module.css'
 import { RoomCard } from '../components/RoomCard'
 import { Divider } from '../components/Divider'
-
-const dictionary = {
-  no: {
-    title: 'Våre Leiligheter',
-    subtitle: 'Alle leilighetene har TV, kjøkken og gratis WiFi.',
-    checkAvailability: 'Sjekk tilgjengelighet',
-    rooms: [
-      {
-        title: 'Ettromsleilighet standard',
-        description: 'Koselig og praktisk leilighet perfekt for par.',
-        capacity: '2 personer',
-        beds: [
-          '1 stor dobbeltseng'
-        ],
-        amenities: ['Kjøkken', 'TV']
-      },
-      {
-        title: 'Leilighet med 1 soverom',
-        description: 'Komfortabel leilighet med separat soverom.',
-        capacity: 'Opptil 4 personer',
-        beds: [
-          '1 dobbeltseng',
-          '1 sovesofa'
-        ],
-        amenities: ['Kjøkken', 'Separat soverom', 'TV']
-      },
-      {
-        title: 'Ettromsleilighet med loft',
-        description: 'Sjarmerende leilighet over to plan.',
-        capacity: 'Opptil 6 personer',
-        beds: [
-          '2 enkeltsenger',
-          '1 dobbeltseng',
-          '1 sovesofa'
-        ],
-        amenities: ['Kjøkken', 'TV']
-      },
-      {
-        title: 'Ettromsleilighet over 2 plan',
-        description: 'Moderne leilighet fordelt over to etasjer.',
-        capacity: 'Opptil 4 personer',
-        beds: [
-          '1 stor dobbeltseng',
-          '1 sovesofa'
-        ],
-        amenities: ['Kjøkken', 'TV']
-      },
-      {
-        title: 'Ettromsleilighet over 2 plan',
-        description: 'Moderne leilighet fordelt over to etasjer.',
-        capacity: 'Opptil 4 personer',
-        beds: [
-          '1 stor dobbeltseng',
-          '1 sovesofa'
-        ],
-        amenities: ['Kjøkken', 'TV']
-      },
-      {
-        title: 'Leilighet med balkong',
-        description: 'Romslig leilighet med egen balkong.',
-        capacity: 'Opptil 5 personer',
-        beds: [
-          '1 stor dobbeltseng',
-          '2 sovesofaer'
-        ],
-        amenities: ['Balkong', 'Kjøkken', 'TV']
-      }
-    ]
-  },
-  en: {
-    title: 'Our Apartments',
-    subtitle: 'All apartments have TV, kitchen and free WiFi.',
-    checkAvailability: 'Check availability',
-    rooms: [
-      {
-        title: 'Standard Studio Apartment',
-        description: 'Cozy and practical apartment perfect for couples.',
-        capacity: '2 people',
-        beds: [
-          '1 large double bed'
-        ],
-        amenities: ['Kitchen', 'TV']
-      },
-      {
-        title: '1 Bedroom Apartment',
-        description: 'Comfortable apartment with separate bedroom.',
-        capacity: 'Up to 4 people',
-        beds: [
-          '1 double bed',
-          '1 sofa bed'
-        ],
-        amenities: ['Kitchen', 'Separate bedroom', 'TV']
-      },
-      {
-        title: 'Studio with Loft',
-        description: 'Charming two-level apartment.',
-        capacity: 'Up to 6 people',
-        beds: [
-          '2 single beds',
-          '1 double bed',
-          '1 sofa bed'
-        ],
-        amenities: ['Kitchen', 'TV']
-      },
-      {
-        title: 'Two-Level Studio',
-        description: 'Modern apartment spread over two floors.',
-        capacity: 'Up to 4 people',
-        beds: [
-          '1 large double bed',
-          '1 sofa bed'
-        ],
-        amenities: ['Kitchen', 'TV']
-      },
-      {
-        title: 'Two-Level Studio',
-        description: 'Modern apartment spread over two floors.',
-        capacity: 'Up to 4 people',
-        beds: [
-          '1 large double bed',
-          '1 sofa bed'
-        ],
-        amenities: ['Kitchen', 'TV']
-      },
-      {
-        title: 'Apartment with Balcony',
-        description: 'Spacious apartment with private balcony.',
-        capacity: 'Up to 5 people',
-        beds: [
-          '1 large double bed',
-          '2 sofa beds'
-        ],
-        amenities: ['Balcony', 'Kitchen', 'TV']
-      }
-    ]
-  }
-}
+import { apartmentsDictionary } from '../dictionaries'
 
 const images = [
   {
@@ -168,10 +33,15 @@ const images = [
   }
 ]
 
+export const metadata = {
+  title: 'Leiligheter | Tollgaarden Gjestegaard',
+  description: 'Comfortable apartments with kitchen and free WiFi in Larvik'
+}
+
 export default async function Apartments() {
   const headersList = await headers()
   const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'
-  const dict = dictionary[lang]
+  const dict = apartmentsDictionary[lang]
 
   return (
     <div className={styles.page}>
@@ -186,17 +56,19 @@ export default async function Apartments() {
         </section>
 
         <section className={styles.roomsList}>
-          {dict.rooms.map((room, index) => (
-            <React.Fragment key={index}>
-              <RoomCard 
-                room={room}
-                images={images[index].images}
-                checkAvailabilityText={dict.checkAvailability}
-                lang={lang}
-              />
-              {index < dict.rooms.length - 1 && <Divider mode="mobile" className={styles.divider} />}
-            </React.Fragment>
-          ))}
+          <Suspense fallback={<div>Loading...</div>}>
+            {dict.rooms.map((room, index) => (
+              <React.Fragment key={index}>
+                <RoomCard 
+                  room={room}
+                  images={images[index].images}
+                  checkAvailabilityText={dict.checkAvailability}
+                  lang={lang}
+                />
+                {index < dict.rooms.length - 1 && <Divider mode="mobile" className={styles.divider} />}
+              </React.Fragment>
+            ))}
+          </Suspense>
         </section>
       </main>
     </div>

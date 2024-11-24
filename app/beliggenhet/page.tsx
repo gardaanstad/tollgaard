@@ -20,7 +20,7 @@ const dictionary = {
   },
   en: {
     title: 'Location',
-    description: 'Tollgaarden is centrally located at Tollerodden in Larvik. Within a 5-minute walk, you\'ll find a family-friendly beach, Fritzøe Brygge, Bølgen cinema and cultural center, dozens of restaurants and cafés, and Larvik train station. You\'ll also find Larvik Maritime Museum and the Manor House just across the street.',
+    description: 'Tollgaarden is located in central Larvik, in the historic Tollerodden area. Within a 5-minute walk, you\'ll find a family-friendly beach, Fritzøe Brygge, Bølgen cinema and cultural center, dozens of restaurants and cafés, and Larvik train station. You\'ll also find Larvik Sjøfartsmuseum and Herregården just across the street.',
     transport: {
       title: 'Transport',
       items: [

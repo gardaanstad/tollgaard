@@ -18,7 +18,7 @@ interface RoomCardProps {
   lang: 'en' | 'no'
 }
 
-export function RoomCard({ room, images, checkAvailabilityText, lang }: RoomCardProps) {
+export function RoomCard({ room, images, checkAvailabilityText, lang }: RoomCardProps) {  
   return (
     <div className={styles.roomItem}>
       <div className={styles.roomImage}>

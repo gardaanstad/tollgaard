@@ -1,4 +1,4 @@
-import React from 'react'
+import { Suspense } from 'react'
 import { headers } from 'next/headers'
 import styles from "./page.module.css";
 import ClientImageCarousel from './components/ClientImageCarousel';
@@ -7,56 +7,18 @@ import { ReviewScore } from './components/ReviewScore'
 import { PrimaryButton } from './components/PrimaryButton'
 import { NewTabIcon } from './components/icons'
 import { Divider } from "./components/Divider";
+import { homeDictionary } from './dictionaries'
 
-const dictionary = {
-  no: {
-    title: 'Velkommen til',
-    subtitle: 'Tollgaarden Gjestegaard',
-    description: 'Opplev historiske Larvik i våre komfortable leiligheter, sentralt plassert med gratis parkering.',
-    bookRoom: 'Reserver rom',
-    reviews: {
-      booking: {
-        score: '8.7 - Utmerket',
-        label: 'på Booking.com'
-      },
-      expedia: {
-        score: '9.4 - Suverent',
-        label: 'på Expedia.no'
-      }
-    },
-    links: {
-      apartments: 'Se leilighetene våre',
-      location: 'Les mer om beliggenheten',
-      info: 'Praktisk informasjon'
-    }
-  },
-  en: {
-    title: 'Welcome to',
-    subtitle: 'Tollgaarden Gjestegaard',
-    description: 'Experience historic Larvik in our comfortable apartments, centrally located with free parking.',
-    bookRoom: 'Book room',
-    reviews: {
-      booking: {
-        score: '8.7 - Excellent',
-        label: 'on Booking.com'
-      },
-      expedia: {
-        score: '9.4 - Superb',
-        label: 'on Expedia.com'
-      }
-    },
-    links: {
-      apartments: 'See our apartments',
-      location: 'Read about the location',
-      info: 'Practical information'
-    }
-  }
+// Add metadata
+export const metadata = {
+  title: 'Tollgaarden Gjestegaard',
+  description: 'Comfortable apartments in historic Larvik with free parking',
 }
 
 export default async function Home() {
   const headersList = await headers()
   const lang = (headersList.get('x-lang') || 'no') as 'en' | 'no'
-  const dict = dictionary[lang]
+  const dict = homeDictionary[lang]
   
   return (
     <div className={styles.page}>
@@ -118,7 +80,9 @@ export default async function Home() {
             </div>
 
             <div className={styles.heroImageWrapper}>
-              <ClientImageCarousel />
+              <Suspense fallback={<div className={styles.imagePlaceholder} />}>
+                <ClientImageCarousel />
+              </Suspense>
             </div>
           </div>
         </section>
