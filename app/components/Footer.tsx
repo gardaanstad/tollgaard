@@ -5,8 +5,8 @@ const dictionary = {
   no: {
     contact: {
       title: 'Kontakt',
-      email: 'Email: post@tollgaarden.no',
-      phone: 'Telefon: +47 123 45 678'
+      email: 'Email: post@tollgaard.no',
+      phone: 'Telefon: +47 952 73 052'
     },
     address: {
       title: 'Adresse',
@@ -17,8 +17,8 @@ const dictionary = {
   en: {
     contact: {
       title: 'Contact',
-      email: 'Email: post@tollgaarden.no',
-      phone: 'Phone: +47 123 45 678'
+      email: 'Email: post@tollgaard.no',
+      phone: 'Phone: +47 952 73 052'
     },
     address: {
       title: 'Address',
